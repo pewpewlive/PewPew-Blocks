@@ -202,7 +202,7 @@ Blockly.Lua['pewpew_configure_player_ship_weapon'] = function(block) {
   var value_ship_id = Blockly.Lua.valueToCode(block, 'ship_id', Blockly.Lua.ORDER_ATOMIC);
   //var variable_player_id = Blockly.Lua.nameDB_.getName(block.getFieldValue('player_id'), Blockly.Names.NameType.VARIABLE);
 
-  var code = `pewpew.configure_player_ship_weapon(${value_ship_id}, ${value_weapon_config})`;
+  var code = `pewpew.configure_player_ship_weapon(${value_ship_id}, ${value_weapon_config})\n`;
   return code;
 };
 
