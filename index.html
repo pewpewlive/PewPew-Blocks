@@ -34,6 +34,18 @@
   </style>
 </head>
 <body>
+  <dialog id="dialog">
+    <h3>Lua code :</h3>
+    <code id="code" style="background-color: #eee;padding:1rem;">
+    </code>
+    <br/>
+    <div style="display:flex">
+    <button id="copybtn" onclick="copyCode()">Copy</button>
+    <form method="dialog">
+      <button>Close</button>
+    </form>
+  </div>
+  </dialog>
   <table>
     <tr>
       <td id="blocklyArea">
@@ -549,7 +561,17 @@
     function showCode() {
       Blockly.Lua.INFINITE_LOOP_TRAP = null;
       var code = Blockly.Lua.workspaceToCode(demoWorkspace);
-      alert(code);
+      window.dialog.showModal();
+      document.getElementById("code").innerText = code;
+      console.log(code);
+    }
+    async function copyCode(){
+    try {
+      await navigator.clipboard.writeText(Blockly.Lua.workspaceToCode(demoWorkspace));
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+
     }
   </script>
 </body>
